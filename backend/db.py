@@ -1,15 +1,16 @@
 """
 Database connection pool for MySQL (Lumina).
 """
+import os
 import mysql.connector
 from mysql.connector import pooling
 
 DB_CONFIG = {
-    "host": "localhost",
-    "port": 3306,
-    "user": "root",
-    "password": "password",
-    "database": "Lumina",
+    "host": os.environ.get("DB_HOST", "localhost"),
+    "port": int(os.environ.get("DB_PORT", 3306)),
+    "user": os.environ.get("DB_USER", "root"),
+    "password": os.environ.get("DB_PASSWORD", "password"),
+    "database": os.environ.get("DB_NAME", "Lumina"),
     # Store/retrieve multilingual text (Telugu, Hindi, etc.) correctly.
     "charset": "utf8mb4",
     "collation": "utf8mb4_unicode_ci",
