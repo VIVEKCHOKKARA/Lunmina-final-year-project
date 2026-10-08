@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Lumina</title>
+    <meta name="description" content="Lumina - Strategic Financial Analytics &amp; Profit Intelligence Platform" />
+    <meta name="author" content="Lumina" />
+
+    <meta property="og:title" content="Lumina" />
+    <meta property="og:description" content="Lumina - Strategic Financial Analytics &amp; Profit Intelligence Platform" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/favicon.svg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lumina" />
+    <meta name="twitter:image" content="/favicon.svg" />
+
+    <!--
+      Flash-of-wrong-theme prevention.
+      This runs synchronously before any CSS or React loads, so the
+      correct dark/light class is on <html> from the very first paint.
+      Default is "dark" when no preference is stored.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('lumina_theme');
+          if (stored === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

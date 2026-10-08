@@ -1,0 +1,12 @@
+numpy
+scikit-learn
+python-dateutil
+xgboost
+prophet
+pandas
+flask
+flask-cors
+flask-socketio
+mysql-connector-python
+requests
+python-dotenv

@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── Light mode (day) ──────────────────────────────────────────────────── */
+  :root {
+    --background: 210 40% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 172 60% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 142 55% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 30% 92%;
+    --muted-foreground: 215 20% 40%;
+
+    --accent: 210 30% 90%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 351 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 25% 82%;
+    --input: 214 25% 82%;
+    --ring: 172 60% 38%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 30% 94%;
+    --sidebar-foreground: 215 20% 35%;
+    --sidebar-primary: 172 60% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 88%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 25% 80%;
+    --sidebar-ring: 172 60% 38%;
+
+    /* Custom tokens */
+    --glow-primary: 0 0 20px hsl(172 60% 38% / 0.12);
+    --glow-secondary: 0 0 20px hsl(142 55% 40% / 0.12);
+    --glow-alert: 0 0 20px hsl(351 80% 55% / 0.12);
+    --gradient-chart: linear-gradient(180deg, hsl(172 60% 38% / 0.2) 0%, hsl(172 60% 38% / 0) 100%);
+  }
+
+  /* ── Dark mode (night) ─────────────────────────────────────────────────── */
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 172 66% 50%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 142 69% 58%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 217 33% 22%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 22%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 351 89% 70%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 172 66% 50%;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 215 20% 65%;
+    --sidebar-primary: 172 66% 50%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 20%;
+    --sidebar-ring: 172 66% 50%;
+
+    /* Custom tokens */
+    --glow-primary: 0 0 20px hsl(172 66% 50% / 0.15);
+    --glow-secondary: 0 0 20px hsl(142 69% 58% / 0.15);
+    --glow-alert: 0 0 20px hsl(351 89% 70% / 0.15);
+    --gradient-chart: linear-gradient(180deg, hsl(172 66% 50% / 0.3) 0%, hsl(172 66% 50% / 0) 100%);
+  }
+}
+
+@layer base {
+  /* Smooth colour transition when switching themes */
+  *, *::before, *::after {
+    @apply border-border;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.15s ease;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glow-card {
+    box-shadow: var(--glow-primary);
+    @apply border border-border bg-card rounded-xl;
+  }
+
+  .glow-card-success {
+    box-shadow: var(--glow-secondary);
+    @apply border border-border bg-card rounded-xl;
+  }
+
+  .glow-card-alert {
+    box-shadow: var(--glow-alert);
+    @apply border border-border bg-card rounded-xl;
+  }
+
+
+  .metric-value {
+    @apply font-display text-3xl font-bold tracking-tight;
+  }
+
+  .metric-label {
+    @apply text-sm text-muted-foreground font-medium uppercase tracking-wider;
+  }
+
+  .insight-text {
+    @apply text-sm text-muted-foreground leading-relaxed font-body;
+  }
+}
+
+@layer utilities {
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: var(--glow-alert); }
+    50% { box-shadow: 0 0 30px hsl(351 89% 70% / 0.3); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes draw-in {
+    from { stroke-dashoffset: 1000; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .animate-draw {
+    animation: draw-in 1s ease-out forwards;
+    stroke-dasharray: 1000;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.4s ease-out forwards;
+  }
+}
