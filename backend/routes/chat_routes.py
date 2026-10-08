@@ -50,7 +50,10 @@ PROJECT_KEYWORDS = [
     # English Shops & Roles
     "shop", "shops", "store", "stores", "location", "locations", "manager", "managers", "owner", "owners", "business", "branch",
     # English Analytics & Features & Website Modules
-    "forecast", "forecasting", "projection", "trend", "growth", "anomaldef is_project_relevant(last_msg: str) -> bool:
+    "forecast", "forecasting", "projection", "trend", "growth", "anomaly"
+]
+
+def is_project_relevant(last_msg: str) -> bool:
     """
     Check if user question is related to Profit Navigator project data / business / platform features.
     Only rejects explicit off-topic general knowledge questions.
