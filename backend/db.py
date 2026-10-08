@@ -19,7 +19,7 @@ DB_CONFIG = {
 # Connection pool — reuses connections across requests
 _pool = pooling.MySQLConnectionPool(
     pool_name="lumina_pool",
-    pool_size=10,
+    pool_size=2,
     pool_reset_session=True,
     **DB_CONFIG,
 )
